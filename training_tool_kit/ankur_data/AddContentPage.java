@@ -1,0 +1,996 @@
+/*
+ * Layout_three.java
+ *
+ * Created on __DATE__, __TIME__
+ */
+
+package com.toolkit;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author  __USER__
+ */
+public class AddContentPage extends javax.swing.JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String ADD_TEXT_LABEL = "enter text";
+	private static final String ADD_CODE_LABEL = "enter code";
+
+	/** Creates new form Layout_three */
+	public AddContentPage() {
+		model = new javax.swing.DefaultListModel();
+		initComponents();
+		layout = new java.awt.GridLayout(0, 1, 5, 5);
+		contentPanel.setLayout(layout);
+		setSize(800, 700);
+		setResizable(false);
+		ImageIcon toolIcon = new ImageIcon("images/logo2.jpg");
+		//toolIcon.
+		toolLabel.setIcon(toolIcon);
+
+		ImageIcon titleIcon = new ImageIcon("images/tool_title_image.png");
+		titleLabel.setIcon(titleIcon);
+
+		ImageIcon companyIcon = new ImageIcon("images/zensar_logo_2.jpg");
+		companyLabel.setIcon(companyIcon);
+		listContentPanel = new java.util.ArrayList<AddTextJPanel>();
+
+	}
+
+	public AddContentPage(AddTopicForm addTopicForm) {
+		this();
+		this.addTopicForm = addTopicForm;
+		// TODO Auto-generated constructor stub
+	}
+
+	//GEN-BEGIN:initComponents
+	// <editor-fold defaultstate="collapsed" desc="Generated Code">
+	private void initComponents() {
+		java.awt.GridBagConstraints gridBagConstraints;
+
+		new javax.swing.JPopupMenu();
+		modulePanel = new javax.swing.JPanel();
+		moduleNameLabel = new javax.swing.JLabel();
+		topicNameLabel = new javax.swing.JLabel();
+		subTopicPanel = new javax.swing.JPanel();
+		scrollbarTopicsLabel = new javax.swing.JLabel();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		subTopicList = new javax.swing.JList();
+		nextButtonLayout = new javax.swing.JButton();
+		topPanel = new javax.swing.JPanel();
+		toolLabel = new javax.swing.JLabel();
+		titleLabel = new javax.swing.JLabel();
+		companyLabel = new javax.swing.JLabel();
+		backButtonLayout = new javax.swing.JButton();
+		renameSubTopicButton = new javax.swing.JButton();
+		menuBar = new javax.swing.JMenuBar();
+		fileMenu = new javax.swing.JMenu();
+		openMenuItem = new javax.swing.JMenuItem();
+		saveMenuItem = new javax.swing.JMenuItem();
+		saveAsMenuItem = new javax.swing.JMenuItem();
+		exitMenuItem = new javax.swing.JMenuItem();
+		editMenu = new javax.swing.JMenu();
+		cutMenuItem = new javax.swing.JMenuItem();
+		copyMenuItem = new javax.swing.JMenuItem();
+		pasteMenuItem = new javax.swing.JMenuItem();
+		deleteMenuItem = new javax.swing.JMenuItem();
+		helpMenu = new javax.swing.JMenu();
+		contentsMenuItem = new javax.swing.JMenuItem();
+		aboutMenuItem = new javax.swing.JMenuItem();
+		contentScrollPane = new javax.swing.JScrollPane();
+		contentPanel = new javax.swing.JPanel();
+		subTopicInfoPanel = new javax.swing.JPanel();
+		subTopicLabel = new javax.swing.JLabel();
+		subTopicTextField = new javax.swing.JTextField();
+		addTextButton = new javax.swing.JButton();
+		addCodeButton = new javax.swing.JButton();
+		doneButton = new javax.swing.JButton();
+		mediaComboBox = new javax.swing.JComboBox();
+		browseButton = new javax.swing.JButton();
+		mediaLabel = new javax.swing.JLabel();
+		addSubTopicButton = new javax.swing.JButton();
+		deleteSubTopicButton = new javax.swing.JButton();
+		deleteComponentButton = new javax.swing.JButton();
+
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+		moduleNameLabel.setText("Module Name");
+
+		topicNameLabel.setText("Topic Name");
+
+		javax.swing.GroupLayout modulePanelLayout = new javax.swing.GroupLayout(
+				modulePanel);
+		modulePanel.setLayout(modulePanelLayout);
+		modulePanelLayout
+				.setHorizontalGroup(modulePanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								modulePanelLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												modulePanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																modulePanelLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				moduleNameLabel,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				94,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addContainerGap(
+																				519,
+																				Short.MAX_VALUE))
+														.addGroup(
+																modulePanelLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				topicNameLabel,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				113,
+																				Short.MAX_VALUE)
+																		.addGap(500,
+																				500,
+																				500)))));
+		modulePanelLayout
+				.setVerticalGroup(modulePanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								modulePanelLayout
+										.createSequentialGroup()
+										.addComponent(
+												moduleNameLabel,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												23,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												9, Short.MAX_VALUE)
+										.addComponent(
+												topicNameLabel,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												23,
+												javax.swing.GroupLayout.PREFERRED_SIZE)));
+
+		scrollbarTopicsLabel.setText("List of Sub-Topics");
+
+		subTopicList.setModel(model);
+		subTopicList
+				.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+					public void valueChanged(
+							javax.swing.event.ListSelectionEvent evt) {
+						subTopicListValueChanged(evt);
+					}
+				});
+		subTopicList.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusLost(java.awt.event.FocusEvent evt) {
+				subTopicListFocusLost(evt);
+			}
+		});
+		jScrollPane1.setViewportView(subTopicList);
+
+		javax.swing.GroupLayout subTopicPanelLayout = new javax.swing.GroupLayout(
+				subTopicPanel);
+		subTopicPanel.setLayout(subTopicPanelLayout);
+		subTopicPanelLayout
+				.setHorizontalGroup(subTopicPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								subTopicPanelLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(
+												scrollbarTopicsLabel,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												143, Short.MAX_VALUE)
+										.addContainerGap())
+						.addComponent(jScrollPane1,
+								javax.swing.GroupLayout.DEFAULT_SIZE, 167,
+								Short.MAX_VALUE));
+		subTopicPanelLayout
+				.setVerticalGroup(subTopicPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								subTopicPanelLayout
+										.createSequentialGroup()
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(
+												scrollbarTopicsLabel,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												26,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												jScrollPane1,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												373,
+												javax.swing.GroupLayout.PREFERRED_SIZE)));
+
+		nextButtonLayout.setText("Next");
+		nextButtonLayout.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				nextButtonLayoutActionPerformed(evt);
+			}
+		});
+
+		topPanel.setLayout(new java.awt.GridBagLayout());
+
+		toolLabel.setText(" ");
+		gridBagConstraints = new java.awt.GridBagConstraints();
+		gridBagConstraints.gridheight = 3;
+		gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+		topPanel.add(toolLabel, gridBagConstraints);
+
+		titleLabel.setText(" ");
+		gridBagConstraints = new java.awt.GridBagConstraints();
+		gridBagConstraints.gridwidth = 6;
+		gridBagConstraints.gridheight = 3;
+		gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+		topPanel.add(titleLabel, gridBagConstraints);
+
+		companyLabel.setText(" ");
+		gridBagConstraints = new java.awt.GridBagConstraints();
+		gridBagConstraints.gridheight = 3;
+		gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+		topPanel.add(companyLabel, gridBagConstraints);
+
+		backButtonLayout.setText("Back");
+		backButtonLayout.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				backButtonLayoutActionPerformed(evt);
+			}
+		});
+
+		renameSubTopicButton.setText("Rename");
+		renameSubTopicButton.setEnabled(false);
+		renameSubTopicButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						renameSubTopicButtonActionPerformed(evt);
+					}
+				});
+
+		fileMenu.setText("File");
+
+		openMenuItem.setText("Open");
+		fileMenu.add(openMenuItem);
+
+		saveMenuItem.setText("Save");
+		fileMenu.add(saveMenuItem);
+
+		saveAsMenuItem.setText("Save As ...");
+		fileMenu.add(saveAsMenuItem);
+
+		exitMenuItem.setText("Exit");
+		exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				exitMenuItemActionPerformed(evt);
+			}
+		});
+		fileMenu.add(exitMenuItem);
+
+		menuBar.add(fileMenu);
+
+		editMenu.setText("Edit");
+
+		cutMenuItem.setText("Cut");
+		editMenu.add(cutMenuItem);
+
+		copyMenuItem.setText("Copy");
+		editMenu.add(copyMenuItem);
+
+		pasteMenuItem.setText("Paste");
+		editMenu.add(pasteMenuItem);
+
+		deleteMenuItem.setText("Delete");
+		editMenu.add(deleteMenuItem);
+
+		menuBar.add(editMenu);
+
+		helpMenu.setText("Help");
+
+		contentsMenuItem.setText("Contents");
+		helpMenu.add(contentsMenuItem);
+
+		aboutMenuItem.setText("About");
+		helpMenu.add(aboutMenuItem);
+
+		menuBar.add(helpMenu);
+
+		contentPanel.setLayout(new java.awt.GridBagLayout());
+		contentScrollPane.setViewportView(contentPanel);
+
+		subTopicLabel.setText("Sub Topic Name");
+
+		subTopicTextField
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						subTopicTextFieldActionPerformed(evt);
+					}
+				});
+
+		addTextButton.setText("Add Text");
+		addTextButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				addTextButtonActionPerformed(evt);
+			}
+		});
+
+		addCodeButton.setText("Add Code");
+		addCodeButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				addCodeButtonActionPerformed(evt);
+			}
+		});
+
+		doneButton.setText("Save Content");
+		doneButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				doneButtonActionPerformed(evt);
+			}
+		});
+
+		mediaComboBox.setModel(new javax.swing.DefaultComboBoxModel(
+				new String[] { "none", "videos", "audios", "images" }));
+		mediaComboBox.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				mediaComboBoxActionPerformed(evt);
+			}
+		});
+
+		browseButton.setText("Browse...");
+		browseButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				browseButtonActionPerformed(evt);
+			}
+		});
+
+		mediaLabel.setText("Add Media ");
+
+		addSubTopicButton.setText("Add Sub Topic");
+		addSubTopicButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						addSubTopicButtonActionPerformed(evt);
+					}
+				});
+
+		javax.swing.GroupLayout subTopicInfoPanelLayout = new javax.swing.GroupLayout(
+				subTopicInfoPanel);
+		subTopicInfoPanel.setLayout(subTopicInfoPanelLayout);
+		subTopicInfoPanelLayout
+				.setHorizontalGroup(subTopicInfoPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								subTopicInfoPanelLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												subTopicInfoPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addComponent(
+																subTopicLabel,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																87,
+																Short.MAX_VALUE)
+														.addComponent(
+																mediaLabel))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												subTopicInfoPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																subTopicInfoPanelLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				subTopicTextField,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				396,
+																				Short.MAX_VALUE)
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+														.addGroup(
+																subTopicInfoPanelLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				mediaComboBox,
+																				0,
+																				109,
+																				Short.MAX_VALUE)
+																		.addGap(18,
+																				18,
+																				18)
+																		.addComponent(
+																				browseButton)
+																		.addGap(18,
+																				18,
+																				18)
+																		.addComponent(
+																				addTextButton)
+																		.addGap(18,
+																				18,
+																				18)
+																		.addComponent(
+																				addCodeButton)
+																		.addGap(10,
+																				10,
+																				10)))
+										.addGroup(
+												subTopicInfoPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING,
+																false)
+														.addComponent(
+																doneButton,
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																addSubTopicButton,
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE))
+										.addContainerGap()));
+		subTopicInfoPanelLayout
+				.setVerticalGroup(subTopicInfoPanelLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								subTopicInfoPanelLayout
+										.createSequentialGroup()
+										.addContainerGap(
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addGroup(
+												subTopicInfoPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																addSubTopicButton)
+														.addComponent(
+																subTopicTextField,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																subTopicLabel))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												subTopicInfoPanelLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																mediaComboBox,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																browseButton)
+														.addComponent(
+																addTextButton)
+														.addComponent(
+																addCodeButton)
+														.addComponent(
+																doneButton)
+														.addComponent(
+																mediaLabel))
+										.addGap(45, 45, 45)));
+
+		deleteSubTopicButton.setText("Delete");
+		deleteSubTopicButton.setEnabled(false);
+		deleteSubTopicButton
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent evt) {
+						deleteSubTopicButtonActionPerformed(evt);
+					}
+				});
+
+		deleteComponentButton.setText("delete component");
+		deleteComponentButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				deleteComponentButtonActionPerformed(evt);
+			}
+		});
+
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
+				getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(
+						layout.createSequentialGroup()
+								.addGroup(
+										layout.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.LEADING)
+												.addComponent(
+														modulePanel,
+														javax.swing.GroupLayout.Alignment.TRAILING,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														Short.MAX_VALUE)
+												.addGroup(
+														layout.createSequentialGroup()
+																.addContainerGap()
+																.addGroup(
+																		layout.createParallelGroup(
+																				javax.swing.GroupLayout.Alignment.LEADING)
+																				.addComponent(
+																						topPanel,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						613,
+																						Short.MAX_VALUE)
+																				.addGroup(
+																						javax.swing.GroupLayout.Alignment.TRAILING,
+																						layout.createSequentialGroup()
+																								.addGroup(
+																										layout.createParallelGroup(
+																												javax.swing.GroupLayout.Alignment.LEADING)
+																												.addComponent(
+																														subTopicPanel,
+																														javax.swing.GroupLayout.PREFERRED_SIZE,
+																														javax.swing.GroupLayout.DEFAULT_SIZE,
+																														javax.swing.GroupLayout.PREFERRED_SIZE)
+																												.addGroup(
+																														layout.createSequentialGroup()
+																																.addGap(9,
+																																		9,
+																																		9)
+																																.addComponent(
+																																		deleteComponentButton,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		158,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE)))
+																								.addPreferredGap(
+																										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																								.addGroup(
+																										layout.createParallelGroup(
+																												javax.swing.GroupLayout.Alignment.LEADING)
+																												.addGroup(
+																														layout.createSequentialGroup()
+																																.addComponent(
+																																		renameSubTopicButton)
+																																.addGap(18,
+																																		18,
+																																		18)
+																																.addComponent(
+																																		deleteSubTopicButton)
+																																.addGap(18,
+																																		18,
+																																		18)
+																																.addComponent(
+																																		backButtonLayout,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		72,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																																.addGap(18,
+																																		18,
+																																		18)
+																																.addComponent(
+																																		nextButtonLayout,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																																		72,
+																																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																																.addPreferredGap(
+																																		javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																																		107,
+																																		Short.MAX_VALUE))
+																												.addComponent(
+																														contentScrollPane,
+																														javax.swing.GroupLayout.DEFAULT_SIZE,
+																														439,
+																														Short.MAX_VALUE)))))
+												.addComponent(
+														subTopicInfoPanel,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														javax.swing.GroupLayout.DEFAULT_SIZE,
+														Short.MAX_VALUE))
+								.addContainerGap()));
+		layout.setVerticalGroup(layout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(
+						layout.createSequentialGroup()
+								.addComponent(topPanel,
+										javax.swing.GroupLayout.PREFERRED_SIZE,
+										92,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(
+										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(modulePanel,
+										javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(
+										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(subTopicInfoPanel,
+										javax.swing.GroupLayout.PREFERRED_SIZE,
+										80,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(7, 7, 7)
+								.addGroup(
+										layout.createParallelGroup(
+												javax.swing.GroupLayout.Alignment.TRAILING)
+												.addGroup(
+														layout.createSequentialGroup()
+																.addComponent(
+																		contentScrollPane,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		380,
+																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(
+																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																.addGroup(
+																		layout.createParallelGroup(
+																				javax.swing.GroupLayout.Alignment.BASELINE)
+																				.addComponent(
+																						renameSubTopicButton,
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						33,
+																						javax.swing.GroupLayout.PREFERRED_SIZE)
+																				.addComponent(
+																						deleteSubTopicButton,
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						33,
+																						javax.swing.GroupLayout.PREFERRED_SIZE)
+																				.addComponent(
+																						backButtonLayout,
+																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						33,
+																						Short.MAX_VALUE)
+																				.addComponent(
+																						nextButtonLayout,
+																						javax.swing.GroupLayout.PREFERRED_SIZE,
+																						33,
+																						javax.swing.GroupLayout.PREFERRED_SIZE))
+																.addGap(37, 37,
+																		37))
+												.addGroup(
+														layout.createSequentialGroup()
+																.addComponent(
+																		deleteComponentButton,
+																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		36,
+																		Short.MAX_VALUE)
+																.addPreferredGap(
+																		javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																.addComponent(
+																		subTopicPanel,
+																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		395,
+																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addContainerGap()))));
+
+		pack();
+	}// </editor-fold>
+	//GEN-END:initComponents
+
+	protected void deleteComponentButtonActionPerformed(
+			java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+		for (AddTextJPanel panel : listContentPanel  ) {
+			boolean checkValue = panel.isSelected();
+			if (checkValue == true) {
+				panel.removeAll();
+				contentPanel.remove(panel);
+
+				//contentPanel.repaint();
+				//contentPanel.setBounds(contentPanel.getX(),contentPanel.getY(),contentPanel.getWidth(), contentPanel.getHeight());
+				//textJPanel.setVisible(false);
+				System.out.println(getClass() + ":  deleting text panel ....");
+				int currentElementIndex = listContentPanel.indexOf(panel);
+				//listContentPanel.remove(currentElementIndex);
+				shuffle();
+			}
+		}
+	}
+
+	public void shuffle() {//very useful method
+		Stack<Component> panels = new Stack<Component>();
+		int count = 0;
+		for (Component c : contentPanel.getComponents()) {
+			panels.push(c);
+			System.out.println(c + "\n----------->" + count++);
+		}
+		// this.getContentPane().removeAll();    
+		//   Collections.shuffle(panels);    
+		Stack<Component> reversedPanels = new Stack<Component>();
+		while (!panels.isEmpty()) {
+			reversedPanels.push(panels.pop());
+		}
+		while (!reversedPanels.empty())
+			contentPanel.add(reversedPanels.pop());
+		((JPanel) getContentPane()).revalidate();
+		this.repaint();
+	}
+
+	private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+		//System.out.println("asd");
+		//mediaNPanel =new AddMediaNamePanel();
+		
+		String selectedMedia = (String) mediaComboBox.getSelectedItem();
+		System.out.println("selected media : " + selectedMedia);
+		if (selectedMedia.equalsIgnoreCase("none")) {
+			JOptionPane.showMessageDialog(this,
+					"Please select any media type!!", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+			JFileChooser jf = new JFileChooser();
+			jf.showOpenDialog(this);
+
+			File file = jf.getSelectedFile();
+  
+			this.validate();
+			this.setVisible(true);
+             
+			FileInputStream fis;
+			try {
+				fis = new FileInputStream(file);
+				byte[] buffer = new byte[(int) file.length()];
+				fis.read(buffer);
+
+				FileOutputStream fos = new FileOutputStream(selectedMedia
+						+ "\\" + file.getName());
+				fos.write(buffer);
+			//	mediaNPanel.labelMediaName.setText(file.getName());
+				//fos
+				fis.close();
+				fos.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(this, "File does not exists!!",
+						"Error", JOptionPane.ERROR_MESSAGE);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				JOptionPane
+						.showMessageDialog(
+								this,
+								"File upload failed due to some internal error!!\nPlease try after some time!!",
+								"Error", JOptionPane.ERROR_MESSAGE);
+			}
+			//contentPanel.add(mediaNPanel);
+			this.validate();
+
+		}
+
+	}
+
+	protected void deleteSubTopicButtonActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		try {
+			int topicIndex = subTopicList.getSelectedIndex();
+			model.remove(topicIndex);
+			if (model.size() == 0) {
+				isModifiable(false);
+			}
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			JOptionPane.showMessageDialog(this,
+					"Please select any sub topic!!", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	protected void renameSubTopicButtonActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		try {
+			String newTopicName = JOptionPane
+					.showInputDialog("Enter new name for the Topic : ");
+			if (model.contains(newTopicName)) {
+				JOptionPane.showMessageDialog(this, "Topic already exists",
+						"Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				int oldTopicIndex = subTopicList.getSelectedIndex();
+				model.set(oldTopicIndex, newTopicName);
+			}
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			JOptionPane.showMessageDialog(this,
+					"Please select any sub topic!!", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+
+	private void subTopicListFocusLost(java.awt.event.FocusEvent evt) {
+		// TODO add your handling code here:
+		//isModifiable(false);
+	}
+
+	private void subTopicListValueChanged(
+			javax.swing.event.ListSelectionEvent evt) {
+		// TODO add your handling code here:
+		isModifiable(true);
+	}
+
+	protected void addSubTopicButtonActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		String subTopicName = subTopicTextField.getText();
+		subTopicName = subTopicName.trim();
+		if (subTopicName.length() != 0) {
+			if (model.contains(subTopicName)) {
+				JOptionPane.showMessageDialog(this, "Topic already exists",
+						"Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				model.addElement(subTopicName);
+			}
+			System.out.println(model.contains(subTopicName.trim()));
+			subTopicTextField.setText("");
+		} else {
+			JOptionPane.showMessageDialog(this, "Please enter any name!!",
+					"Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+
+	protected void addTextButtonActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		textJPanel = new AddTextJPanel();
+		contentPanel.add(textJPanel);
+		listContentPanel.add(textJPanel);
+		System.out.println("add text button");
+		//layout.addLayoutComponent("textJPanel",textJPanel);
+		this.validate();
+	}
+
+	protected void addCodeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+		codeJPanel = new AddCodePanel();
+		contentPanel.add(codeJPanel);
+		System.out.println("add code button");
+		this.validate();
+	}
+
+	protected void doneButtonActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected void mediaComboBoxActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected void isModifiable(boolean setValue) {
+		deleteSubTopicButton.setEnabled(setValue);
+		renameSubTopicButton.setEnabled(setValue);
+	}
+
+	private void backButtonLayoutActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+		this.setVisible(false);
+		addTopicForm.setVisible(true);
+	}
+
+	private void subTopicTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+	}
+
+	private void nextButtonLayoutActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+		try {
+			int checkList = model.size();
+			if (checkList == 0) {
+				throw new EmptyListException();
+			}
+			if (finishForm == null) {
+				finishForm = new FinishForm(this);
+			}
+			this.setVisible(false);
+			finishForm.setVisible(true);
+		} catch (EmptyListException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(this, "please create any subtopic!!",
+					"Error", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+	}
+
+	private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+		System.exit(0);
+	}
+
+	/**
+	 * @param args the command line arguments
+	 */
+
+	public static void main(String args[]) {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new AddContentPage().setVisible(true);
+			}
+		});
+	}
+
+	//GEN-BEGIN:variables
+	// Variables declaration - do not modify
+	private javax.swing.JMenuItem aboutMenuItem;
+	private javax.swing.JButton addCodeButton;
+	private javax.swing.JButton addSubTopicButton;
+	private javax.swing.JButton addTextButton;
+	private javax.swing.JButton backButtonLayout;
+	private javax.swing.JButton browseButton;
+	private javax.swing.JLabel companyLabel;
+	private javax.swing.JPanel contentPanel;
+	private javax.swing.JScrollPane contentScrollPane;
+	private javax.swing.JMenuItem contentsMenuItem;
+	private javax.swing.JMenuItem copyMenuItem;
+	private javax.swing.JMenuItem cutMenuItem;
+	private javax.swing.JMenuItem deleteMenuItem;
+	private javax.swing.JButton deleteSubTopicButton;
+	private javax.swing.JButton doneButton;
+	private javax.swing.JMenu editMenu;
+	private javax.swing.JMenuItem exitMenuItem;
+	private javax.swing.JMenu fileMenu;
+	private javax.swing.JMenu helpMenu;
+	private javax.swing.JButton deleteComponentButton;
+	private javax.swing.JScrollPane jScrollPane1;
+	private javax.swing.JComboBox mediaComboBox;
+	private javax.swing.JLabel mediaLabel;
+	private javax.swing.JMenuBar menuBar;
+	private javax.swing.JLabel moduleNameLabel;
+	private javax.swing.JPanel modulePanel;
+	private javax.swing.JButton nextButtonLayout;
+	private javax.swing.JMenuItem openMenuItem;
+	private javax.swing.JMenuItem pasteMenuItem;
+	private javax.swing.JButton renameSubTopicButton;
+	private javax.swing.JMenuItem saveAsMenuItem;
+	private javax.swing.JMenuItem saveMenuItem;
+	private javax.swing.JLabel scrollbarTopicsLabel;
+	private javax.swing.JPanel subTopicInfoPanel;
+	private javax.swing.JLabel subTopicLabel;
+	private javax.swing.JList subTopicList;
+	private javax.swing.JPanel subTopicPanel;
+	private javax.swing.JTextField subTopicTextField;
+	private javax.swing.JLabel titleLabel;
+	private javax.swing.JLabel toolLabel;
+	private javax.swing.JPanel topPanel;
+	private javax.swing.JLabel topicNameLabel;
+	// End of variables declaration//GEN-END:variables
+	private javax.swing.DefaultListModel model;
+	protected AddTopicForm addTopicForm;
+	private FinishForm finishForm;
+	private List<AddTextJPanel> listContentPanel;
+	public AddTextJPanel textJPanel;
+	private GridLayout layout;
+	public AddCodePanel codeJPanel;
+
+}

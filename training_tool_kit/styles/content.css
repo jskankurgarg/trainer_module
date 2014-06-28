@@ -1,0 +1,16 @@
+.code{
+	display:block;
+	background-color:#C5E8D4;
+	width:100%;
+	height:auto;
+	font-family:"Courier New", Courier, monospace;
+	font-size:18px;
+}
+.text{
+	display:block;
+	background-color:#C5E8D4;
+	width:100%;
+	height:auto;	
+	font-family:"Times New Roman", Times, serif;
+	font-size:18px;
+}
